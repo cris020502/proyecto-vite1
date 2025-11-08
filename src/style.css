@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+#personaForm, .filtros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+#personaForm div, .filtros div {
+  display: flex;
+  flex-direction: column;
+}
+
+#personaForm label, .filtros label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+#personaForm input,
+#personaForm select,
+.filtros input,
+.filtros select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#agregarPersonaBtn {
+  grid-column: 4 / 5;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: end;
+}
+
+#agregarPersonaBtn:hover {
+  background-color: #0056b3;
+}
+
+.campo-invalido {
+  border: 2px solid red !important;
+  background-color: #fff7f7;
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+#personaTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#personaTable th,
+#personaTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#personaTable th {
+  background-color: #f2f2f2;
+}
+
+.btn-editar, .btn-eliminar {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  margin-right: 5px;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+}
+
+.btn-eliminar {
+  background-color: #dc3545;
+}

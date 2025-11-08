@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Personas</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gestión de Personas</h1>
+
+    <form id="personaForm">
+      <div><label for="nombre">Nombre</label><input type="text" id="nombre" data-requerido="true"></div>
+      <div><label for="apellidoPaterno">Apellido Paterno</label><input type="text" id="apellidoPaterno" data-requerido="true"></div>
+      <div><label for="apellidoMaterno">Apellido Materno</label><input type="text" id="apellidoMaterno"></div>
+      <div><label for="edad">Edad</label><input type="number" id="edad" data-requerido="true"></div>
+
+      <div><label for="estatura">Estatura (mts)</label><input type="number" step="0.01" id="estatura" data-requerido="true"></div>
+      <div><label for="nacionalidad">Nacionalidad</label><input type="text" id="nacionalidad" data-requerido="true"></div>
+      <div><label for="colorPiel">Color de piel</label><input type="text" id="colorPiel"></div>
+      <div><label for="complejion">Complexión</label><input type="text" id="complejion"></div>
+
+      <div><label for="profesion">Profesión</label><input type="text" id="profesion" data-requerido="true"></div>
+      <div><label for="gradoEstudios">Grado de estudios</label><input type="text" id="gradoEstudios" data-requerido="true"></div>
+      <div><label for="estadoCivil">Estado Civil</label>
+        <select id="estadoCivil" data-requerido="true">
+          <option value="">-- Seleccione --</option>
+          <option value="Soltero">Soltero</option>
+          <option value="Casado">Casado</option>
+          <option value="Divorciado">Divorciado</option>
+          <option value="Viudo">Viudo</option>
+        </select>
+      </div>
+      <div><label for="lugarTrabajo">Lugar de trabajo</label><input type="text" id="lugarTrabajo"></div>
+
+      <div><label for="empresa">Empresa</label><input type="text" id="empresa"></div>
+      <div><label for="tieneINE">¿Tiene INE?</label>
+        <select id="tieneINE"><option value="Si">Si</option><option value="No">No</option></select>
+      </div>
+      <div><label for="tienePasaporte">¿Tiene pasaporte?</label>
+        <select id="tienePasaporte"><option value="Si">Si</option><option value="No">No</option></select>
+      </div>
+      <div><label for="representante">Representante</label><input type="text" id="representante"></div>
+
+      <div><label for="telefonoTrabajo">Teléfono trabajo</label><input type="tel" id="telefonoTrabajo"></div>
+
+      <div></div><div></div>
+      <button type="button" id="agregarPersonaBtn">Agregar Persona</button>
+    </form>
+
+    <hr>
+    <h2>Filtros</h2>
+    <div class="filtros" id="seccionFiltros">
+      <div><label for="filtroEstatura">Estatura mínima</label><input type="number" id="filtroEstatura" step="0.01"></div>
+      <div><label for="filtroEdad">Edad mínima</label><input type="number" id="filtroEdad"></div>
+      <div><label for="filtroProfesion">Profesión</label><input type="text" id="filtroProfesion"></div>
+      <div><label for="filtroEstadoCivil">Estado Civil</label>
+        <select id="filtroEstadoCivil">
+          <option value="Todos">Todos</option>
+          <option value="Soltero">Soltero</option>
+          <option value="Casado">Casado</option>
+          <option value="Divorciado">Divorciado</option>
+          <option value="Viudo">Viudo</option>
+        </select>
+      </div>
+      <div><label for="filtroNacionalidad">Nacionalidad (Enter)</label><input type="text" id="filtroNacionalidad"></div>
+    </div>
+
+    <hr>
+
+    <h2>Personas</h2>
+    <div class="tabla-contenedor">
+      <table id="personaTable">
+        <thead>
+          <tr>
+            <th>Nombre Completo</th>
+            <th>Edad</th>
+            <th>Estatura</th>
+            <th>Profesión</th>
+            <th>Estado Civil</th>
+            <th>Nacionalidad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="personaTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
+    
+
