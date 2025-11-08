@@ -15,7 +15,7 @@ mongoose
   .then(() => console.log("✅ Conectado a MongoDB Atlas"))
   .catch((err) => console.error("❌ Error al conectar a MongoDB:", err));
 
-// Definir el esquema de persona
+// Esquema y modelo
 const personaSchema = new mongoose.Schema({
   nombre: String,
   apellidoPaterno: String,
@@ -36,10 +36,9 @@ const personaSchema = new mongoose.Schema({
   telefonoTrabajo: String,
 });
 
-// Modelo basado en el esquema
 const Persona = mongoose.model("Persona", personaSchema);
 
-// 📩 Crear (POST)
+// Rutas CRUD
 app.post("/api/personas", async (req, res) => {
   try {
     const persona = new Persona(req.body);
@@ -50,25 +49,20 @@ app.post("/api/personas", async (req, res) => {
   }
 });
 
-// 📋 Leer (GET)
 app.get("/api/personas", async (req, res) => {
   const personas = await Persona.find();
   res.json(personas);
 });
 
-// 📝 Actualizar (PUT)
 app.put("/api/personas/:id", async (req, res) => {
   try {
-    const persona = await Persona.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const persona = await Persona.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(persona);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
 
-// 🗑️ Eliminar (DELETE)
 app.delete("/api/personas/:id", async (req, res) => {
   try {
     await Persona.findByIdAndDelete(req.params.id);
@@ -78,6 +72,6 @@ app.delete("/api/personas/:id", async (req, res) => {
   }
 });
 
-// Servidor escuchando
+// Puerto del servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));

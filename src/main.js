@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   todosLosCampos.forEach(id => data[id] = document.getElementById(id).value);
 
   try {
-    const res = await fetch("http://localhost:5000/api/personas", {
+    const res = await fetch("https://proyecto-vite1.onrender.com", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
