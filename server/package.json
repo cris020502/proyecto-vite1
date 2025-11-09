@@ -4,8 +4,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-  "start": "node server.js",
-  "build": "echo 'no build step needed' && exit 0"
+  "start": "node server.js"
+  
 }
 ,
   "dependencies": {
