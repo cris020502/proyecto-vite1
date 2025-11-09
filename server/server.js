@@ -5,20 +5,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const app = express();
-app.use(cors());
+
+
 app.use(express.json());
 
-app.use(cors({
-  // Coloca aquí la URL de tu frontend en Netlify
-  origin: "https://gestion1personas.netlify.app", 
-  
-  // Incluye todos los métodos HTTP que usas en tus rutas
-  methods: ["GET", "POST", "PUT", "DELETE"], 
-  
-  // Permite el encabezado Content-Type que se usa para enviar JSON
-  allowedHeaders: ["Content-Type"]
+const app = express();
+app.use(cors()); // ⬅️ 1. CORS General (Permite *todo*)
+app.use(express.json());
+
+app.use(cors({ // ⬅️ 2. CORS Específico (Permite solo Netlify)
+  origin: "https://gestion1personas.netlify.app", 
+// ...
 }));
+
 
 // Conexión con MongoDB Atlas
 mongoose

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return esValido;
   }
 
-  const API_URL = "https://proyecto-vite1.onrender.com";
+ const API_BASE_URL = "https://proyecto-vite1.onrender.com";
 
 async function agregarPersona() {
   if (!validarFormulario()) return;
@@ -36,12 +36,13 @@ async function agregarPersona() {
   const data = {};
   todosLosCampos.forEach(id => data[id] = document.getElementById(id).value);
 
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
+ try {
+    // ⚠️ USO DE LA URL COMPLETA
+ const res = await fetch(`${API_BASE_URL}/api/personas`, { 
+    method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    });
+ });
 
     if (!res.ok) throw new Error("Error al guardar en la base de datos");
 
