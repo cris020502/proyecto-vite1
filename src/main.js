@@ -28,14 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return esValido;
   }
 
-  async function agregarPersona() {
+  const API_URL = "https://gestion-personas-backend.onrender.com/api/personas";
+
+async function agregarPersona() {
   if (!validarFormulario()) return;
 
   const data = {};
   todosLosCampos.forEach(id => data[id] = document.getElementById(id).value);
 
   try {
-    const res = await fetch("https://proyecto-vite1.onrender.com", {
+    const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -44,16 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!res.ok) throw new Error("Error al guardar en la base de datos");
 
     const result = await res.json();
+    alert("✅ Persona guardada correctamente");
     console.log("Guardado en MongoDB:", result);
-    alert("Persona guardada correctamente");
-
   } catch (error) {
     console.error(error);
-    alert("Error al guardar los datos");
+    alert("⚠️ Error al guardar los datos");
   }
 
   form.reset();
 }
+
 
 
   function filtrarTabla() {
