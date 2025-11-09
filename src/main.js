@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const API_BASE_URL = "https://proyecto-vite1.onrender.com"; // tu backend Render
   const agregarBtn = document.getElementById('agregarPersonaBtn');
   const tableBody = document.getElementById('personaTableBody');
   const form = document.getElementById('personaForm');
@@ -28,61 +29,68 @@ document.addEventListener('DOMContentLoaded', () => {
     return esValido;
   }
 
- const API_BASE_URL = "https://proyecto-vite1.onrender.com";
-
-async function agregarPersona() {
-  if (!validarFormulario()) return;
-
-  const data = {};
-  todosLosCampos.forEach(id => data[id] = document.getElementById(id).value);
-
- try {
-    // ⚠️ USO DE LA URL COMPLETA
- const res = await fetch(`${API_BASE_URL}/api/personas`, { 
-    method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
- });
-
-    if (!res.ok) throw new Error("Error al guardar en la base de datos");
-
-    const result = await res.json();
-    alert("✅ Persona guardada correctamente");
-    console.log("Guardado en MongoDB:", result);
-  } catch (error) {
-    console.error(error);
-    alert("⚠️ Error al guardar los datos");
+  // 🔹 NUEVO: Cargar personas desde la base de datos
+  async function cargarPersonas() {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/personas`);
+      if (!res.ok) throw new Error("Error al cargar personas");
+      const personas = await res.json();
+      renderTabla(personas);
+    } catch (error) {
+      console.error("Error cargando datos:", error);
+    }
   }
 
-  form.reset();
-}
+  // 🔹 Renderizar tabla
+  function renderTabla(personas) {
+    tableBody.innerHTML = "";
+    personas.forEach(persona => {
+      const fila = document.createElement("tr");
+      fila.setAttribute("data-estatura", persona.estatura);
+      fila.setAttribute("data-edad", persona.edad);
+      fila.setAttribute("data-profesion", persona.profesion);
+      fila.setAttribute("data-estadocivil", persona.estadoCivil);
+      fila.setAttribute("data-nacionalidad", persona.nacionalidad);
 
-
-
-  function filtrarTabla() {
-    const filtroEstatura = parseFloat(document.getElementById('filtroEstatura').value) || 0;
-    const filtroEdad = parseInt(document.getElementById('filtroEdad').value) || 0;
-    const filtroProfesion = document.getElementById('filtroProfesion').value.toLowerCase();
-    const filtroEstadoCivil = document.getElementById('filtroEstadoCivil').value;
-    const filtroNacionalidad = document.getElementById('filtroNacionalidad').value.toLowerCase();
-
-    tableBody.querySelectorAll('tr').forEach(fila => {
-      const estaturaFila = parseFloat(fila.getAttribute('data-estatura')) || 0;
-      const edadFila = parseInt(fila.getAttribute('data-edad')) || 0;
-      const profesionFila = fila.getAttribute('data-profesion').toLowerCase();
-      const estadoCivilFila = fila.getAttribute('data-estadocivil');
-      const nacionalidadFila = fila.getAttribute('data-nacionalidad').toLowerCase();
-
-      const pasaEstatura = estaturaFila >= filtroEstatura;
-      const pasaEdad = edadFila >= filtroEdad;
-      const pasaProfesion = profesionFila.includes(filtroProfesion);
-      const pasaNacionalidad = nacionalidadFila.includes(filtroNacionalidad);
-      const pasaEstadoCivil = (filtroEstadoCivil === 'Todos' || estadoCivilFila === filtroEstadoCivil);
-
-      fila.style.display = (pasaEstatura && pasaEdad && pasaProfesion && pasaNacionalidad && pasaEstadoCivil)
-        ? ''
-        : 'none';
+      fila.innerHTML = `
+        <td>${persona.nombre} ${persona.apellidoPaterno} ${persona.apellidoMaterno}</td>
+        <td>${persona.edad}</td>
+        <td>${persona.estatura}</td>
+        <td>${persona.profesion}</td>
+        <td>${persona.estadoCivil}</td>
+        <td>${persona.nacionalidad}</td>
+        <td>
+          <button class="btn-editar">Editar</button>
+          <button class="btn-eliminar">Eliminar</button>
+        </td>
+      `;
+      tableBody.appendChild(fila);
     });
+  }
+
+  // 🔹 Agregar persona
+  async function agregarPersona() {
+    if (!validarFormulario()) return;
+
+    const data = {};
+    todosLosCampos.forEach(id => data[id] = document.getElementById(id).value);
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/personas`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Error al guardar en la base de datos");
+
+      alert("✅ Persona guardada correctamente");
+      form.reset();
+      await cargarPersonas(); // 🔹 Recargar tabla
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ Error al guardar los datos");
+    }
   }
 
   function manejarClicksTabla(e) {
@@ -102,18 +110,17 @@ async function agregarPersona() {
     }
   }
 
+  // 🔹 Eventos
   agregarBtn.addEventListener('click', agregarPersona);
   tableBody.addEventListener('click', manejarClicksTabla);
-
-  seccionFiltros.addEventListener('keyup', e => {
-    if (e.target.id !== 'filtroNacionalidad') filtrarTabla();
-  });
-
+  seccionFiltros.addEventListener('keyup', filtrarTabla);
   filtroNacionalidadInput.addEventListener('keyup', e => {
     if (e.key === 'Enter') filtrarTabla();
   });
-
   seccionFiltros.addEventListener('change', e => {
     if (e.target.tagName === 'SELECT') filtrarTabla();
   });
+
+  // 🔹 Cargar al inicio
+  cargarPersonas();
 });
