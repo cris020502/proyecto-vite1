@@ -9,6 +9,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+  // Coloca aquí la URL de tu frontend en Netlify
+  origin: "https://gestion1personas.netlify.app", 
+  
+  // Incluye todos los métodos HTTP que usas en tus rutas
+  methods: ["GET", "POST", "PUT", "DELETE"], 
+  
+  // Permite el encabezado Content-Type que se usa para enviar JSON
+  allowedHeaders: ["Content-Type"]
+}));
+
 // Conexión con MongoDB Atlas
 mongoose
   .connect(process.env.MONGODB_URI)

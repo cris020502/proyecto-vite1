@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return esValido;
   }
 
-  const API_URL = "https://gestion-personas-backend.onrender.com/api/personas";
+  const API_URL = "https://proyecto-vite1.onrender.com";
 
 async function agregarPersona() {
   if (!validarFormulario()) return;
