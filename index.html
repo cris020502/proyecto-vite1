@@ -1,185 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Personas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Personas</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="/src/style.css">
+    
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!--  CSS -->
-  <link rel="stylesheet" href="/src/style.css">
 </head>
 <body class="bg-light">
-  <div class="container py-4">
-    <h1 class="text-center mb-4 fw-bold">Gestión de Personas</h1>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Gestión de Personas</h1>
 
-    <!-- FORMULARIO -->
-    <form id="personaForm" class="row g-3 p-4 border rounded shadow-sm bg-white">
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" id="nombre" class="form-control" data-requerido="true">
-      </div>
+        <form id="personaForm" class="row g-3 p-4 border rounded shadow-sm bg-white">
+            <div class="col-md-6 col-lg-4">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-        <input type="text" id="apellidoPaterno" class="form-control" data-requerido="true">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                <input type="text" id="apellidoPaterno" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-        <input type="text" id="apellidoMaterno" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                <input type="text" id="apellidoMaterno" class="form-control">
+            </div>
 
-      <div class="col-6 col-md-4 col-lg-3">
-        <label for="edad" class="form-label">Edad</label>
-        <input type="number" id="edad" class="form-control" data-requerido="true">
-      </div>
+            <div class="col-md-6 col-lg-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" id="edad" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-6 col-md-4 col-lg-3">
-        <label for="estatura" class="form-label">Estatura (mts)</label>
-        <input type="number" step="0.01" id="estatura" class="form-control" data-requerido="true">
-      </div>
+            <div class="col-md-6 col-lg-3">
+                <label for="estatura" class="form-label">Estatura (mts)</label>
+                <input type="number" step="0.01" id="estatura" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-3">
-        <label for="nacionalidad" class="form-label">Nacionalidad</label>
-        <input type="text" id="nacionalidad" class="form-control" data-requerido="true">
-      </div>
+            <div class="col-md-6 col-lg-3">
+                <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                <input type="text" id="nacionalidad" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-3">
-        <label for="colorPiel" class="form-label">Color de piel</label>
-        <input type="text" id="colorPiel" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-3">
+                <label for="colorPiel" class="form-label">Color de piel</label>
+                <input type="text" id="colorPiel" class="form-control">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="complejion" class="form-label">Complexión</label>
-        <input type="text" id="complejion" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="complejion" class="form-label">Complexión</label>
+                <input type="text" id="complejion" class="form-control">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="profesion" class="form-label">Profesión</label>
-        <input type="text" id="profesion" class="form-control" data-requerido="true">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="profesion" class="form-label">Profesión</label>
+                <input type="text" id="profesion" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="gradoEstudios" class="form-label">Grado de estudios</label>
-        <input type="text" id="gradoEstudios" class="form-control" data-requerido="true">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="gradoEstudios" class="form-label">Grado de estudios</label>
+                <input type="text" id="gradoEstudios" class="form-control" data-requerido="true">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="estadoCivil" class="form-label">Estado Civil</label>
-        <select id="estadoCivil" class="form-select" data-requerido="true">
-          <option value="">-- Seleccione --</option>
-          <option value="Soltero">Soltero</option>
-          <option value="Casado">Casado</option>
-          <option value="Divorciado">Divorciado</option>
-          <option value="Viudo">Viudo</option>
-        </select>
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="estadoCivil" class="form-label">Estado Civil</label>
+                <select id="estadoCivil" class="form-select" data-requerido="true">
+                    <option value="">-- Seleccione --</option>
+                    <option value="Soltero">Soltero</option>
+                    <option value="Casado">Casado</option>
+                    <option value="Divorciado">Divorciado</option>
+                    <option value="Viudo">Viudo</option>
+                </select>
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="lugarTrabajo" class="form-label">Lugar de trabajo</label>
-        <input type="text" id="lugarTrabajo" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="lugarTrabajo" class="form-label">Lugar de trabajo</label>
+                <input type="text" id="lugarTrabajo" class="form-control">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="empresa" class="form-label">Empresa</label>
-        <input type="text" id="empresa" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="empresa" class="form-label">Empresa</label>
+                <input type="text" id="empresa" class="form-control">
+            </div>
 
-      <div class="col-6 col-md-4 col-lg-4">
-        <label for="tieneINE" class="form-label">¿Tiene INE?</label>
-        <select id="tieneINE" class="form-select">
-          <option value="Si">Sí</option>
-          <option value="No">No</option>
-        </select>
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="tieneINE" class="form-label">¿Tiene INE?</label>
+                <select id="tieneINE" class="form-select">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
 
-      <div class="col-6 col-md-4 col-lg-4">
-        <label for="tienePasaporte" class="form-label">¿Tiene pasaporte?</label>
-        <select id="tienePasaporte" class="form-select">
-          <option value="Si">Sí</option>
-          <option value="No">No</option>
-        </select>
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="tienePasaporte" class="form-label">¿Tiene pasaporte?</label>
+                <select id="tienePasaporte" class="form-select">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="representante" class="form-label">Representante</label>
-        <input type="text" id="representante" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="representante" class="form-label">Representante</label>
+                <input type="text" id="representante" class="form-control">
+            </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <label for="telefonoTrabajo" class="form-label">Teléfono trabajo</label>
-        <input type="tel" id="telefonoTrabajo" class="form-control">
-      </div>
+            <div class="col-md-6 col-lg-4">
+                <label for="telefonoTrabajo" class="form-label">Teléfono trabajo</label>
+                <input type="tel" id="telefonoTrabajo" class="form-control">
+            </div>
 
-      <div class="col-12 text-center mt-3">
-        <button type="button" id="agregarPersonaBtn" class="btn btn-primary px-4 py-2">Agregar Persona</button>
-      </div>
-    </form>
+            <div class="col-12 text-center mt-3">
+                <button type="button" id="agregarPersonaBtn" class="btn btn-primary w-100 w-md-50 w-lg-25">Agregar Persona</button>
+            </div>
+        </form>
 
-    <!-- FILTROS -->
-    <hr class="my-4">
-    <h2 class="text-center mb-3">Filtros</h2>
+        <hr class="my-4">
 
-    <div class="row g-3 mb-4 p-4 border rounded shadow-sm bg-white" id="seccionFiltros">
-      <div class="col-6 col-md-4 col-lg-2">
-        <label for="filtroEstatura" class="form-label">Estatura mínima</label>
-        <input type="number" id="filtroEstatura" class="form-control" step="0.01">
-      </div>
+        <h2 class="text-center mb-3">Filtros</h2>
+        <div class="row g-3 mb-4 p-4 border rounded shadow-sm bg-white" id="seccionFiltros">
+            <div class="col-md-4 col-lg-2">
+                <label for="filtroEstatura" class="form-label">Estatura mínima</label>
+                <input type="number" id="filtroEstatura" class="form-control" step="0.01">
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <label for="filtroEdad" class="form-label">Edad mínima</label>
+                <input type="number" id="filtroEdad" class="form-control">
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <label for="filtroProfesion" class="form-label">Profesión</label>
+                <input type="text" id="filtroProfesion" class="form-control">
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <label for="filtroEstadoCivil" class="form-label">Estado Civil</label>
+                <select id="filtroEstadoCivil" class="form-select">
+                    <option value="Todos">Todos</option>
+                    <option value="Soltero">Soltero</option>
+                    <option value="Casado">Casado</option>
+                    <option value="Divorciado">Divorciado</option>
+                    <option value="Viudo">Viudo</option>
+                </select>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <label for="filtroNacionalidad" class="form-label">Nacionalidad (Enter)</label>
+                <input type="text" id="filtroNacionalidad" class="form-control">
+            </div>
+        </div>
 
-      <div class="col-6 col-md-4 col-lg-2">
-        <label for="filtroEdad" class="form-label">Edad mínima</label>
-        <input type="number" id="filtroEdad" class="form-control">
-      </div>
+        <hr class="my-4">
 
-      <div class="col-12 col-md-4 col-lg-2">
-        <label for="filtroProfesion" class="form-label">Profesión</label>
-        <input type="text" id="filtroProfesion" class="form-control">
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-3">
-        <label for="filtroEstadoCivil" class="form-label">Estado Civil</label>
-        <select id="filtroEstadoCivil" class="form-select">
-          <option value="Todos">Todos</option>
-          <option value="Soltero">Soltero</option>
-          <option value="Casado">Casado</option>
-          <option value="Divorciado">Divorciado</option>
-          <option value="Viudo">Viudo</option>
-        </select>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-3">
-        <label for="filtroNacionalidad" class="form-label">Nacionalidad (Enter)</label>
-        <input type="text" id="filtroNacionalidad" class="form-control">
-      </div>
+        <h2 class="text-center mb-3">Personas</h2>
+        <div class="table-responsive">
+            <table id="personaTable" class="table table-striped table-hover align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Edad</th>
+                        <th>Estatura</th>
+                        <th>Profesión</th>
+                        <th>Estado Civil</th>
+                        <th>Nacionalidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="personaTableBody"></tbody>
+            </table>
+            <div id="loadingMessage" class="py-2 text-center text-muted">Cargando datos...</div>
+        </div>
     </div>
 
-    <!-- TABLA -->
-    <hr class="my-4">
-    <h2 class="text-center mb-3">Personas</h2>
-
-    <div class="table-responsive">
-      <table id="personaTable" class="table table-striped table-hover align-middle text-center">
-        <thead class="table-dark">
-          <tr>
-            <th>Nombre Completo</th>
-            <th>Edad</th>
-            <th>Estatura</th>
-            <th>Profesión</th>
-            <th>Estado Civil</th>
-            <th>Nacionalidad</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="personaTableBody"></tbody>
-      </table>
-      <div id="loadingMessage" class="py-2 text-center text-muted">Cargando datos...</div>
-    </div>
-  </div>
-
-  <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    
 </body>
 </html>
